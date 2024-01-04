@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Countdown application </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>Coming Soon <br>our formers Festival</h1>
+            <br>
+            <h2>Sankranti</h2>
+        </div>
+        <div class="right">
+            <h1>Here's the <br>count down</h1>
+            <br>
+            <div class="time">
+                <div class="subdate">
+                    <h2 id="days"></h2>
+                    <p>Days</p>
+                </div>
+                <div class="subdate">
+                    <h2 id="hours"></h2>
+                    <p>Hours</p>
+                </div>
+                <div class="subdate">
+                    <h2 id="minutes"></h2>
+                    <p>Minutes</p>
+                </div>
+                <div class="subdate">
+                    <h2 id="seconds"></h2>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const days = document.querySelectorAll('days')
+        const hours = document.querySelectorAll('hours')
+        const minutes = document.querySelectorAll('minutes')
+        const seconds = document.querySelectorAll('seconds')
+
+        const FestTime = new Date('January 15 2024 00:00:00')
+
+        function Countdown() {
+            const currentTime = new Date();
+            const diff = FestTime - currentTime
+
+            const d = Math.floor(diff / 1000 / 60 / 60 / 24)
+            const h = Math.floor(diff / 1000 / 60 / 60) % 24
+            const m = Math.floor(diff / 1000 / 60) % 60
+            const s = Math.floor(diff / 1000) % 60
+
+            document.getElementById('days').innerHTML = d < 10 ? '0' + d : d
+            document.getElementById('hours').innerHTML = h < 10 ? '0' + h : h
+            document.getElementById('minutes').innerHTML = m < 10 ? '0' + m : m
+            document.getElementById('seconds').innerHTML = s < 10 ? '0' + s : s
+
+
+        }
+        setInterval(Countdown, 1000)
+
+    </script>
+</body>
+
+</html>
